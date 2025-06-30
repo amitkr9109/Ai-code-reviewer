@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.project-main{
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+}
+.project-section{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 1.2em;
+}
+.project-section>*{
+    height: 100%;
+    flex: 1;
+    border-radius: 0.5em;
+}
+.project-section .chat{
+    background-color: #ECE5DD;
+    position: relative;
+}
+.chat .messages{
+    width: 80%;
+    height: 89%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow-y: auto;
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.chat .messages::-webkit-scrollbar{
+    display: none;
+}
+.chat .messages .message{
+    width: fit-content;
+    background-color: #e0dada;
+    padding: 0.4em 1em;
+    border-radius: 0.3em;
+}
+.input-area{
+    position: absolute;
+    left: 50%;
+    bottom: 1em;
+    transform: translateX(-50%);
+    width: 80%;
+    display: flex;
+    padding: 0.4em 0.8em;
+    background-color: #e0dada;
+    border-radius: 0.5em;
+}
+.input-area input{
+    width: 100%;
+    padding: 1em 2em;
+    outline: none;
+    border-radius: 0.5em;
+    border: none;
+    background-color: transparent;
+}
+.input-area button{
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.input-area button:active{
+    scale: 95%;
+}
+.project-section .code{
+    background-color: #1E1E1E;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.project-section .code .language-selector{
+    padding: 10px;
+    background-color: #252526;
+    z-index: 10;
+}
+.project-section .code .language-selector select{
+    background-color: #3c3c3c;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+.project-section .code .language-selector select:hover{
+    background-color: #4c4c4c;
+}
+.project-section .code .language-selector select option{
+    background-color: #3c3c3c;
+    color: #ffffff;
+}
+.project-section .code .monaco-editor .margin {
+    background-color: #1e1e1e;
+}
+.project-section .review{
+    background-color: #F0F0F0;
+    position: relative;
+    overflow-y: auto;
+    padding: 1rem;
+    padding-left: 2rem;
+    scrollbar-width: none;
+}
+.project-section .review .get-review{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.project-section .review .get-review:active{
+    scale: 95%;
+}

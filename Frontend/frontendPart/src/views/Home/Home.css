@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.home{
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(209, 206, 206);
+    padding: 1rem;
+}
+.home-section button{
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: rgb(0, 0, 255);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.home-section button:hover{
+    background-color: rgb(5, 5, 216);
+}
+.home-section button:active{
+    scale: 95%;
+}
+.projects{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 2em;
+}
+.show-project-section h3{
+    font-size: 1.5em;
+    font-weight: 100;
+    margin-top: 1em;
+}
+.show-project-section .projects .project-str{
+    height: 18vh;
+    padding: 1em 2em;
+    border-radius: 0.3em;
+    cursor: pointer;
+    background-color: rgba(236, 233, 233, 0.812);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.2), -10px -10px 20px rgba(255,255,255,0.3);
+}
+.project-str .project-name{
+    font-size: 1.2em;
+    
+}
+.projects .icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    margin-top: 2em;
+    font-size: 1.5em;
+}
+.icons .view-icon{
+    color: blue;
+}
+.icons .delete-icon{
+    color: red;
+}
+.icons .online-part h5{
+    font-size: 0.8em;
+    font-weight: 100;
+}
+.project:active{
+    scale: 95%;
+}
+p{
+    font-size: 2em;
+    font-weight: 100;
+    margin-top: 1em;
+}
