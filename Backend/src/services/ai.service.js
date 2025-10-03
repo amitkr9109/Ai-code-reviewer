@@ -5,7 +5,6 @@ const ai = new GoogleGenAI({apiKey: config.Google_API_KEY});
 
 
 export async function getReview(code){
-  console.log(code)
   const response = await ai.models.generateContent({
     model: "gemini-2.5-pro",
     contents: "code",

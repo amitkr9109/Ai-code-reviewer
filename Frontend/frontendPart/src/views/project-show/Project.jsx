@@ -4,6 +4,8 @@ import './Project.css'
 import { io as SocketIo } from "socket.io-client"
 import Editor from '@monaco-editor/react'
 import ReactMarkdown from 'react-markdown'
+import { ClipLoader } from 'react-spinners'
+import { toast } from 'react-toastify'
 
 const Project = () => {
 
@@ -15,9 +17,15 @@ const Project = () => {
     const [code, setCode] = useState("// Write Your Code Here...\n");
     const [language, setLanguage] = useState("javascript");
     const [review, setReview] = useState("*No review yet. Click 'get-review' to generate a code review.*") ;
-
+    const [loading, setLoading] = useState(false);
 
     function HandleMessage(){
+
+        if(!input || !input.trim()) {
+            toast.error("Message is required!");
+            return;
+        }
+
         setMessages(function(prev){
             return [ ...prev, input ]
         })
@@ -35,11 +43,12 @@ const Project = () => {
     }
 
     function getReview(){
+        setLoading(true);
         socket.emit("get-review", code)
     }
 
     useEffect(function(){
-        const io = SocketIo("http://localhost:3000", {
+        const io = SocketIo(`${import.meta.env.VITE_BASE_URL}`, {
             query: {
                 projecidshow : params.id 
             }
@@ -69,18 +78,20 @@ const Project = () => {
 
 
         io.on("code-review", function(review){
-            console.log(review)
             setReview(review)
+            setLoading(false)
         })
 
         io.emit("review-history")
 
         io.on("review-history", function(review){
             setReview(review)
+            setLoading(false)
         })
 
         io.on("review-show", function(review){
             setReview(review)
+            setLoading(false)
         })
 
         setSocket(io)
@@ -92,14 +103,17 @@ const Project = () => {
         <section className='project-section'>
             <div className="chat">
                 <div className="messages">
-                    {Messages.map (function(Message){
+                    <a href="/" className='a-tag'>Go Back to Home Page...</a>
+                    {Messages?.map (function(Message){
                         return <div className="message">{Message}</div>
                     })}
                 </div>
                 <div className="input-area">
-                    <input type="text" placeholder='Enter message...' onChange={function(e){
-                        setInput(e.target.value)
-                    }} value={input}/>
+                    <input type="text" placeholder='Enter message...' value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => {
+                        if(e.key === "Enter") {
+                            HandleMessage()
+                        }
+                    }} />
                     <button onClick={function(){
                         HandleMessage()
                     }}><i class="ri-send-plane-2-fill"></i></button>
@@ -143,7 +157,7 @@ const Project = () => {
                 </div>
                 <button onClick={function(){
                     getReview()
-                }} className='get-review'>Review</button>
+                }} className='get-review' disabled={loading}>{loading ? <ClipLoader size={20} color='blue' /> : "Review"}</button>
             </div>
         </section>
       </main>

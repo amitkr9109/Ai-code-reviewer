@@ -44,7 +44,7 @@ html,body{
     outline: none;
     border: none;
 }
-.create-project-section form input[type="submit"]{
+.create-project-section form button{
     padding: 1em 2em;
     border: none;
     border-radius: 0.3rem;
@@ -52,10 +52,11 @@ html,body{
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 85%;
 }
-.create-project-section form input[type="submit"]:hover{
+.create-project-section form button:hover{
     background-color: rgb(5, 5, 216);
 }
-.create-project-section form input[type="submit"]:active{
+.create-project-section form button:active{
     scale: 95%;
 }
