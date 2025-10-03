@@ -1,7 +1,8 @@
 import React from 'react'
-import Routes from './Routes/routes'
+import Routes from './routes/Routes'
 import { ToastContainer } from 'react-toastify'
-import "react-toastify/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
+
 
 const App = () => {
   return (
